@@ -14,19 +14,19 @@ software in this container.
 
 ## View Geometry
 
-1.)  cd /eic/examples
+1.)  cd /eic/doc/examples
 
-2.)  gemc eic_example.gcard
+2.)  gemc example.gcard
 
 
 ## Simulate events
 
-1.)  cd /eic/examples
+1.)  cd /eic/doc/examples
 
-2.)  gemc -INPUT_GEN_FILE="LUND,pythiaCharmDIS_sample.txt" \
+2.)  gemc -INPUT_GEN_FILE="LUND,pythia-sample.lund" \
           -OUTPUT="evio,sample_out.evio" \
 		  -USE_GUI=0 \
-		  eic_example.gcard
+		  example.gcard
 
 3.)  evio2root -INPUTF=sample_out.evio
 
@@ -50,7 +50,7 @@ gemc has a built in particle gun that can be configured via
 the GUI. It will also accept events read from a file in the
 LUND format. An example file is present in:
 
-/eic/examples
+/eic/doc/examples
 
 
 
@@ -63,7 +63,7 @@ TTree. Detector hit information is stored in the "flux" tree.
 
 example 1: Plot x,y,z of all hits for all detectors.
 
-Assuming you are in the /eic/examples directory:
+Assuming you are in the /eic/doc/examples directory:
 
 $ root -l sample_out.root
 root [1] flux->Draw("avg_z:avg_y:avg_x", "abs(avg_z)<5000")
