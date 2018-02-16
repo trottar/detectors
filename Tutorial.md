@@ -1,6 +1,9 @@
 # JLEIC Software Tutorial
 
 Edited by: Markus Diefenthaler, David Lawrence
+Version: 1.0.2
+
+[[_TOC_]]
 
 The [Jefferson Lab Electron-Ion Collider (JLEIC)](https://eic.jlab.org/wiki/index.php/Main_Page) is a proposed realization of the Electron-Ion Collider (EIC), a new US-based facility with a versatile range of beam energies, polarizations, and species, as well as high luminosity. The EIC is required to precisely image the quarks and gluons and their interactions, to explore the new QCD frontier of strong color fields in nuclei – to understand how matter at its most fundamental level is made. The EIC has been chosen as the highest priority new construction for Nuclear Physics in the US.  
 
@@ -15,30 +18,45 @@ The [Docker Community Edition](https://www.docker.com/community-edition) provide
 ### Obtaining the JLEIC Docker image
 The JLEIC Docker images are deployed using the electronioncollider swarm on Docker Hub. The latest version can be obtained via: 
 ```sh
-docker pull electronioncollider/jleic:1.0.0
+docker pull electronioncollider/jleic:1.0.2
 ```
-> ToDo: Discuss versioning and either add a sentence about update or "The same command allows to update an existing version." in case of jleic:latest being defined. 
 
 ### Running the JLEIC Docker image
 The JLEIC Docker images provide an interactive environment which can be started via: 
 ```sh
-docker run -it --rm -p 6080:6080 -v ${PWD}:/data electronioncollider/jleic:1.0.0
+docker run -it --rm -p 6080:6080 -v ${PWD}:/data electronioncollider/jleic:1.0.2
 ```
 and can be accessed via the host system’s native web browser.
 ```sh
   http://localhost:6080
 ```
-> ToDo: Can we get rid of the noVNC password (e.g., [random example](https://github.com/elgalu/docker-selenium/issues/115))? Otherwise, I should mention the password.
 
 ### Working with the JLEIC Docker image
 
-###### Examples
+#### Examples
+Quick-start tutorials are comprised of examples for exercising the JLEIC Software in the Docker image. The examples are provided inside the image in **/eic/doc/examples** and include all required input files. 
 
-###### Data cards
-data card (XML) to steer application, all Geant4 macro commands supported by design
+#### File exchange
+The working directory on the local host is mounted in the Docker image on **/data**. This allows to transfer files between the local host and the Docker image and to store simulation results on the local host. 
 
-###### File exchange
+#### Gcards
+The [GEMC options](https://gemc.jlab.org/gemc/html/documentation/options.html?highlight=gcard) can be specified via gcards. The configuration files in the XML markup language allow to steer GEMC and to document the detector configuration and simulation parameters. An example is provided in **/eic/doc/examples/example.gcard**. 
 
-###### Monte Carlo input
+#### Geometry
+Details of the geometry can be found in **/eic/geometry/eic/geometry**.
 
-###### Output file
+#### Generated events
+GEMC has a built-in particle gun that can be configured via the GUI. It can also read in Monte Carlo events provided the output of the Monte Carlo Event Generator is in or has been converted to the [LUND format](https://gemc.jlab.org/gemc/html/documentation/generator/lund.html). An example file is available in **/eic/doc/examples/pythia-sample.lund**.
+
+#### Simulated Data
+Simulated data is written to an EVIO file and then converted into a ROOT file with the evio2root application. The generated event information is stored in the *generated* TTree; the detector hit information is stored in the *flux* TTree. The *id* field specifies which detector the hit came from, e.g.:
+| id | Detector |
+| -------- | -------- |
+|31000 | EMCAL: Barrel |
+34000 | EMCAL: Upstream outer |
+35000 | EMCAL: Upstream inner |
+|50XXX | Silicon Tracker | 
+|52X00 | GEM: Downstream (X=7,8,9) |
+|53X00 | GEM/TRD (X=0,1) |
+|53X00 | GEM: Upstream (X=5,6,7,8,9) |
+
