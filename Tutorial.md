@@ -3,8 +3,6 @@
 Edited by: Markus Diefenthaler, David Lawrence
 Version: 1.0.2
 
-[[_TOC_]]
-
 The [Jefferson Lab Electron-Ion Collider (JLEIC)](https://eic.jlab.org/wiki/index.php/Main_Page) is a proposed realization of the Electron-Ion Collider (EIC), a new US-based facility with a versatile range of beam energies, polarizations, and species, as well as high luminosity. The EIC is required to precisely image the quarks and gluons and their interactions, to explore the new QCD frontier of strong color fields in nuclei – to understand how matter at its most fundamental level is made. The EIC has been chosen as the highest priority new construction for Nuclear Physics in the US.  
 
 The JLEIC Software utilizes the [GEMC application](https://gemc.jlab.org/gemc/html/index.html) for detector simulations. GEMC is built upon the Geant4 toolkit and has been designed with the goal of reducing the learning curve for running Geant4 simulations. It provides a macro language for detector design that is ideal for developing detector concepts and studying detector prototypes. A graphical user interface allows to get familiar with GEMC simulations and to visualize the events in a versatile OpenGL display. In this tutorial, we describe how to run JLEIC simulations. For details on GEMC, we refer to the excellent [GEMC documentation](https://gemc.jlab.org/gemc/html/documentation/documentation.html). 
@@ -50,13 +48,12 @@ GEMC has a built-in particle gun that can be configured via the GUI. It can also
 
 #### Simulated Data
 Simulated data is written to an EVIO file and then converted into a ROOT file with the evio2root application. The generated event information is stored in the *generated* TTree; the detector hit information is stored in the *flux* TTree. The *id* field specifies which detector the hit came from, e.g.:
-| id | Detector |
-| -------- | -------- |
-|31000 | EMCAL: Barrel |
-34000 | EMCAL: Upstream outer |
-35000 | EMCAL: Upstream inner |
-|50XXX | Silicon Tracker | 
-|52X00 | GEM: Downstream (X=7,8,9) |
-|53X00 | GEM/TRD (X=0,1) |
-|53X00 | GEM: Upstream (X=5,6,7,8,9) |
+
+* 31000: EMCAL: Barrel
+* 34000: EMCAL: Upstream outer
+* 35000: EMCAL: Upstream inner
+* 50XXX: Silicon Tracker
+* 52X00: GEM: Downstream (X=7,8,9)
+* 53X00: GEM/TRD (X=0,1)
+* 53X00: GEM: Upstream (X=5,6,7,8,9)
 
