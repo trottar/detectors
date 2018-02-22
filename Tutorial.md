@@ -11,7 +11,7 @@ The JLEIC Software utilizes the [GEMC application](https://gemc.jlab.org/gemc/ht
 The JLEIC Software is provided as Docker images. The primary goal of the images is to provide an easy means for scientists to start running JLEIC simulations. Specifically targeted are persons with limited time to invest in building the software and all of its prerequisites. 
 
 ### Installing Docker
-The [Docker Community Edition](https://www.docker.com/community-edition) provides the latest Docker version with integrated tooling to build, test and run container images. It is available for free for a variety of infrastructure, including Mac and Windows. 
+The [Docker Community Edition](https://www.docker.com/community-edition) provides the latest Docker version with integrated tooling to build, test and run container images. It is available for free for a variety of infrastructure, including Mac and Windows. Please follow the instructions to install, configure, and test Docker on your system.
 
 ### Obtaining the JLEIC Docker image
 The JLEIC Docker images are deployed using the electronioncollider swarm on Docker Hub. The latest version can be obtained via: 
