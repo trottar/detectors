@@ -11,13 +11,15 @@ The JLEIC Software utilizes the [GEMC application](https://gemc.jlab.org/gemc/ht
 The JLEIC Software is provided as Docker images. The primary goal of the images is to provide an easy means for scientists to start running JLEIC simulations. Specifically targeted are persons with limited time to invest in building the software and all of its prerequisites. 
 
 ### Installing Docker
-The [Docker Community Edition](https://www.docker.com/community-edition) provides the latest Docker version with integrated tooling to build, test and run container images. It is available for free for a variety of infrastructure, including Mac and Windows. Please follow the instructions to install, configure, and test Docker on your system.
+The [Docker Community Edition](https://www.docker.com/community-edition) provides the latest Docker version with integrated tooling to build, test and run container images. It 
+is available for free for a variety of infrastructure, including Mac and Windows. Please follow the instructions to install, configure, and test Docker on your system.
 
 ### Obtaining the JLEIC Docker image
 The JLEIC Docker images are deployed using the electronioncollider swarm on Docker Hub. The latest version can be obtained via: 
 ```sh
 docker pull electronioncollider/jleic:1.0.2
 ```
+This requires the Docker to be running on the local system.
 
 ### Running the JLEIC Docker image
 The JLEIC Docker images provide an interactive environment which can be started via: 
@@ -28,6 +30,8 @@ and can be accessed via the host system’s native web browser.
 ```sh
   http://localhost:6080
 ```
+This requires the Docker to be running on the local system.
+
 
 ### Working with the JLEIC Docker image
 
@@ -35,7 +39,11 @@ and can be accessed via the host system’s native web browser.
 Quick-start tutorials are comprised of examples for exercising the JLEIC Software in the Docker image. The examples are provided inside the image in **/eic/doc/examples** and include all required input files. 
 
 #### File exchange
-The working directory on the local host is mounted in the Docker image on **/data**. This allows to transfer files between the local host and the Docker image and to store simulation results on the local host. 
+The working directory on the local host is mounted in the Docker image on **/data**. This has been specified in the *docker run* commend via the option of *-v ${PWD}:/data*. A **/specific/directory/** on the local host can be specified via 
+```sh 
+docker run -it --rm -p 6080:6080 -v /specific/directory/:/data electronioncollider/jleic:1.0.2
+``` 
+This allows to transfer files between the local host and the Docker image and to store simulation results on the local host. 
 
 #### Gcards
 The [GEMC options](https://gemc.jlab.org/gemc/html/documentation/options.html?highlight=gcard) can be specified via gcards. The configuration files in the XML markup language allow to steer GEMC and to document the detector configuration and simulation parameters. An example is provided in **/eic/doc/examples/example.gcard**. 
