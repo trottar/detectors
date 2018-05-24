@@ -46,6 +46,7 @@
 <option name="HALL_DIMENSIONS" value="100*m,100*m,100*m"/>
 
 <option name="FIELD_DIR" value="/eic/geometry/eic/field"/>
+<option name="HALL_FIELD" value="det1_solenoid_hybrid_v1"/>
 
 <option name="BEAM_P"   value="proton, 100*GeV, 50e-3*rad, 180*deg"/>
 <option name="SPREAD_P" value="0*GeV,0*deg,0*deg"/>
