@@ -34,7 +34,7 @@ sub det1_solenoid_hybrid_coil_inner
  my @Dz   = (160);
  my @name = ("coil_inner"); 
  my @mother = ("$DetectorMother"); 
- my @mat  = ("Kryptonite");
+ my @mat  = ("G4_STAINLESS-STEEL");
  
 
  for(my $n=1; $n<=$NUM; $n++)
@@ -71,7 +71,8 @@ sub det1_solenoid_hybrid_coil_side_eleside
  my @Dz   = (20);
  my @name = ("coil_side_eleside"); 
  my @mother = ("$DetectorMother"); 
- my @mat  = ("Kryptonite");
+# my @mat  = ("Kryptonite");
+my @mat  = ("G4_STAINLESS-STEEL");
  
 
  for(my $n=1; $n<=$NUM; $n++)
@@ -102,13 +103,14 @@ sub det1_solenoid_hybrid_coil_side_eleside
 sub det1_solenoid_hybrid_coil_side_ionside
 {
  my $NUM  = 1;
- my @z    = (160.5+20+$offset_inner);
+ my @z    = (160.5+25+$offset_inner);
  my @Rin  = (190);
  my @Rout = (202.4);
  my @Dz   = (20);
  my @name = ("coil_side_ionside"); 
  my @mother = ("$DetectorMother"); 
- my @mat  = ("Kryptonite");
+# my @mat  = ("Kryptonite");
+my @mat  = ("G4_STAINLESS-STEEL");
  
 
  for(my $n=1; $n<=$NUM; $n++)
@@ -146,7 +148,7 @@ sub det1_solenoid_hybrid_coil_eleside
  my @Dz   = (3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5);
  my @name = ("coil_eleside_1","coil_eleside_2","coil_eleside_3","coil_eleside_4","coil_eleside_5","coil_eleside_6","coil_eleside_7","coil_eleside_8"); 
  my @mother = ("$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother"); 
- my @mat  = ("Kryptonite","Kryptonite","Kryptonite","Kryptonite","Kryptonite","Kryptonite","Kryptonite","Kryptonite");
+ my @mat  = ("G4_STAINLESS-STEEL","G4_STAINLESS-STEEL","G4_STAINLESS-STEEL","G4_STAINLESS-STEEL","G4_STAINLESS-STEEL","G4_STAINLESS-STEEL","G4_STAINLESS-STEEL","G4_STAINLESS-STEEL");
  my @rot  = (0,0,0,0,0,0,0,0);
 
 #  for(my $n=1; $n<=$NUM; $n++)
@@ -180,15 +182,13 @@ sub det1_solenoid_hybrid_coil_ionside
 {
  my $coilthickness=17;
  my $NUM  = 7;
-# my $myz=412.5;
- my $myz=422.5;
- my @z    = ( $myz+3.5+$offset, $myz+3.5+$offset, $myz+3.5+$offset, $myz+3.5+$offset, $myz+3.5+$offset, $myz+3.5+$offset, $myz+3.5+$offset);
+ my @z    = (412.5+3.5+$offset,412.5+3.5+$offset,412.5+3.5+$offset,412.5+3.5+$offset,412.5+3.5+$offset,412.5+3.5+$offset,412.5+3.5+$offset);
  my @Rin  = (32,62,93,123,154,184,214);
  my @Rout = (32+$coilthickness,62+$coilthickness,93+$coilthickness,123+$coilthickness,154+$coilthickness,184+$coilthickness,214+$coilthickness);
  my @Dz   = (3.5,3.5,3.5,3.5,3.5,3.5,3.5);
  my @name = ("coil_ionside_1","coil_ionside_2","coil_ionside_3","coil_ionside_4","coil_ionside_5","coil_ionside_6","coil_ionside_7"); 
  my @mother = ("$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother"); 
- my @mat  = ("Kryptonite","Kryptonite","Kryptonite","Kryptonite","Kryptonite","Kryptonite","Kryptonite");
+ my @mat  = ("G4_STAINLESS-STEEL","G4_STAINLESS-STEEL","G4_STAINLESS-STEEL","G4_STAINLESS-STEEL","G4_STAINLESS-STEEL","G4_STAINLESS-STEEL","G4_STAINLESS-STEEL");
  my @rot  = (0,0,0,0,0,0,0);
 
 #  for(my $n=1; $n<=$NUM; $n++)
@@ -221,28 +221,44 @@ sub det1_solenoid_hybrid_coil_ionside
 
 sub det1_solenoid_hybrid_iron_barrel
 {
- my $NUM  = 1;
- my @z    = ($offset_inner);
- my @Rin  = (210);
- my @Rout = (300);
- my @Dz   = (180);
- my @name = ("iron_barrel"); 
- my @mother = ("$DetectorMother"); 
- my @mat  = ("Kryptonite");
+# my $NUM  = 1;
+# my @z    = ($offset_inner);
+# my @Rin  = (210);
+# my @Rout = (300);
+# my @Dz   = (180);
+# my @name = ("iron_barrel"); 
+# my @mother = ("$DetectorMother"); 
+# my @mat  = ("Kryptonite");
  
-
+my $NUM  = 13;
+my @z    = ($offset_inner);
+my @Rin_1  = (210);
+#my @Rout = (215, );
+my @Dz   = (180);
+my @name = ("iron_barrel"); 
+my @mother = ("$DetectorMother"); 
+#my @mat  = ("Kryptonite");
+my @mat  = ("G4_Fe");
+ 
  for(my $n=1; $n<=$NUM; $n++)
  {
+    my $Rin = 210+7*($n-1);
+    my  $Rout = $Rin+5;
+   
+    print "*************   $n,$Rin, $Rout \n" ;
+    my $name1 =("iron_barrel\_$n");
+
+    
     my %detector=init_det();
-    $detector{"name"}        = "$DetectorName\_$name[$n-1]";
-    $detector{"mother"}      = "$mother[$n-1]" ;
-    $detector{"description"} = "$DetectorName\_$name[$n-1]";
-    $detector{"pos"}        = "0*cm 0*cm $z[$n-1]*cm";
+    $detector{"name"}        = "$DetectorName\_$name1";
+    $detector{"mother"}      = "$mother[0]" ;
+    $detector{"description"} = "$DetectorName\_$name1";
+    $detector{"pos"}        = "0*cm 0*cm $z[0]*cm";
     $detector{"rotation"}   = "0*deg 0*deg 0*deg";
     $detector{"color"}      = "9900CC";
     $detector{"type"}       = "Tube";
-    $detector{"dimensions"} = "$Rin[$n-1]*cm $Rout[$n-1]*cm $Dz[$n-1]*cm 0*deg 360*deg";
-    $detector{"material"}   = $mat[$n-1];
+    $detector{"dimensions"} = "$Rin*cm $Rout*cm $Dz[0]*cm 0*deg 360*deg";
+    $detector{"material"}   = $mat[0];
     $detector{"mfield"}     = "no";
     $detector{"ncopy"}      = 1;
     $detector{"pMany"}       = 1;

@@ -26,29 +26,29 @@ sub det1_tracker_barrel
  my @mother = ("$DetectorMother"); 
  my $mat  = ("Vacuum");
 
- for(my $n=1; $n<=$NUM; $n++)
- {
-    my %detector=init_det();
-    $detector{"name"}        = "$DetectorName\_$name[$n-1]";
-    $detector{"mother"}      = "$mother[$n-1]" ;
-    $detector{"description"} = "$DetectorName\_$name[$n-1]";
-    $detector{"pos"}        = "0*cm 0*cm $z[$n-1]*cm";
-    $detector{"rotation"}   = "0*deg 0*deg 0*deg";
-    $detector{"color"}      = "fff4e7"; 
-    $detector{"type"}       = "Tube";
-    $detector{"dimensions"} = "$Rin[$n-1]*cm $Rout[$n-1]*cm $Dz[$n-1]*cm 0*deg 360*deg";
-    $detector{"material"}   = $mat;
-    $detector{"mfield"}     = "no";
-    $detector{"ncopy"}      = 1;
-    $detector{"pMany"}       = 1;
-    $detector{"exist"}       = 1;
-    $detector{"visible"}     = 1;
-    $detector{"style"}       = 1;
-    $detector{"sensitivity"} = "no";
-    $detector{"hit_type"}    = "no";
-    $detector{"identifiers"} = "no";
-     print_det(\%configuration, \%detector);
- }
+# for(my $n=1; $n<=$NUM; $n++)
+# {
+#    my %detector=init_det();
+#    $detector{"name"}        = "$DetectorName\_$name[$n-1]";
+#    $detector{"mother"}      = "$mother[$n-1]" ;
+#    $detector{"description"} = "$DetectorName\_$name[$n-1]";
+#    $detector{"pos"}        = "0*cm 0*cm $z[$n-1]*cm";
+#    $detector{"rotation"}   = "0*deg 0*deg 0*deg";
+#    $detector{"color"}      = "fff4e7"; 
+#    $detector{"type"}       = "Tube";
+#    $detector{"dimensions"} = "$Rin[$n-1]*cm $Rout[$n-1]*cm $Dz[$n-1]*cm 0*deg 360*deg";
+#    $detector{"material"}   = $mat;
+#    $detector{"mfield"}     = "no";
+#    $detector{"ncopy"}      = 1;
+#    $detector{"pMany"}       = 1;
+#    $detector{"exist"}       = 1;
+#    $detector{"visible"}     = 1;
+#    $detector{"style"}       = 1;
+#    $detector{"sensitivity"} = "flux";
+#    $detector{"hit_type"}    = "flux";
+#    $detector{"identifiers"} = "no";
+#     print_det(\%configuration, \%detector);
+# }
 
 
 
@@ -73,10 +73,6 @@ sub det1_tracker_barrel
 # my @name = ("1","2"); 
  #my @mother = ("$DetectorMother","$DetectorMother"); 
 # my $mat  = ("Air");
-my $mat_str  = ("Air");
- my $RinStr  = 4.;
- my $RoutStr = ($RinStr+0.05);
- my $DzStr   = 140.;
 
 
  for(my $n=1; $n<=$NUMS; $n++)
@@ -85,14 +81,14 @@ my $mat_str  = ("Air");
     my $RoutS=  $RinS+0.05; 
     my %detector=init_det();
     $detector{"name"}        = "$DetectorName\_$nameS[$n-1]";
-    $detector{"mother"}      = "$mother[0]" ;
+    $detector{"mother"}      = "$motherS[0]" ;
     $detector{"description"} = "$DetectorName\_$nameS[$n-1]";
     $detector{"pos"}        = "0*cm 0*cm $offset_inner*cm";
     $detector{"rotation"}   = "0*deg $rotBeam*rad 0*deg";
     $detector{"color"}      = "fbc83c"; 
     $detector{"type"}       = "Tube";
     $detector{"dimensions"} = "$RinS*cm $RoutS*cm $Dz[0]*cm 0*deg 360*deg";
-    $detector{"material"}   = $matS;
+    $detector{"material"}   = "G4_Si";
     $detector{"mfield"}     = "no";
     $detector{"ncopy"}      = 1;
     $detector{"pMany"}       = 1;
@@ -101,48 +97,9 @@ my $mat_str  = ("Air");
     $detector{"style"}       = 1;
     $detector{"sensitivity"} = "flux";
     $detector{"hit_type"}    = "flux";
-    my $id=61000+$n*100;
+    my $id=71000+$n*100;
     $detector{"identifiers"} = "id manual $id";
-    print_det(\%configuration, \%detector);
-    if ($n==1) { 
-	$NUM_STR  = 12;
-    }else  {
-         $NUM_STR  = 1;         
-    }
-
-
- 
-      print "********************* START STRAWS!!!*********************\n ";
-
-      for(my $s=1; $s<=$NUM_STR; $s++)
-     {
-          my %detector=init_det();
-         my $name =("Starw\_$s\_$n");
-         print "detector name  $name \n";
-         $detector{"name"}        = "$name";
-         $detector{"mother"}      = "$mother" ;
-         $detector{"description"} = "$name";
-         $detector{"pos"}        = "$posXstr*cm $posYstr*cm $posZstr*cm";
-         $detector{"rotation"}   = "0*deg $rotBeam*rad $Rotation*deg";
-         $detector{"color"}      = "09e5f4"; 
-         $detector{"type"}       = "Tube";
-         $detector{"dimensions"} = "$RinStr*cm $RoutStr*cm $DzStr*cm 0*deg 360*deg";
-         $detector{"material"}   = $mat_str;
-         $detector{"mfield"}     = "no";
-         $detector{"ncopy"}      = 1;
-         $detector{"pMany"}       = 1;
-         $detector{"exist"}       = 1;
-         $detector{"visible"}     = 1;
-         $detector{"style"}       = 1;
-         $detector{"sensitivity"} = "flux";
-         $detector{"hit_type"}    = "flux";
-         my $id=50000+$l*100+$n;
-         $detector{"identifiers"} = "id manual $id";
-         print_det(\%configuration, \%detector);
-
-
-     }
-
+     print_det(\%configuration, \%detector);
  }
 
 

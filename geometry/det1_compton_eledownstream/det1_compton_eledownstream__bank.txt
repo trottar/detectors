@@ -1,0 +1,26 @@
+         eic_compton  |              bankid  |                               eic_compton bank ID  | 2002   |                  Di  
+         eic_compton  |                hitn  |                                        Hit Number  |   99   |                  Di  
+         eic_compton  |                 pid  |ID of the first particle entering the sensitive volume  |    1   |                  Di  
+         eic_compton  |                mpid  |ID of the mother of the first particle entering the sensitive volume  |    2   |                  Di  
+         eic_compton  |                 tid  |Track ID of the first particle entering the sensitive volume  |    3   |                  Di  
+         eic_compton  |                mtid  |Track ID of the mother of the first particle entering the sensitive volume  |    4   |                  Di  
+         eic_compton  |                otid  |Track ID of the original track that generated the first particle entering the sensitive volume  |    5   |                  Di  
+         eic_compton  |              trackE  |                               Energy of the track  |    6   |                  Dd  
+         eic_compton  |             totEdep  |                            Total Energy Deposited  |    7   |                  Dd  
+         eic_compton  |               avg_x  |     Average X position in global reference system  |    8   |                  Dd  
+         eic_compton  |               avg_y  |     Average Y position in global reference system  |    9   |                  Dd  
+         eic_compton  |               avg_z  |     Average Z position in global reference system  |   10   |                  Dd  
+         eic_compton  |              avg_lx  |      Average X position in local reference system  |   11   |                  Dd  
+         eic_compton  |              avg_ly  |      Average Y position in local reference system  |   12   |                  Dd  
+         eic_compton  |              avg_lz  |      Average Z position in local reference system  |   13   |                  Dd  
+         eic_compton  |                  px  |x component of momentum of the particle entering the sensitive volume  |   14   |                  Dd  
+         eic_compton  |                  py  |y component of momentum of the particle entering the sensitive volume  |   15   |                  Dd  
+         eic_compton  |                  pz  |z component of momentum of the particle entering the sensitive volume  |   16   |                  Dd  
+         eic_compton  |                  vx  |x component of primary vertex of the particle entering the sensitive volume  |   17   |                  Dd  
+         eic_compton  |                  vy  |y component of primary vertex of the particle entering the sensitive volume  |   18   |                  Dd  
+         eic_compton  |                  vz  |z component of primary vertex of the particle entering the sensitive volume  |   19   |                  Dd  
+         eic_compton  |                 mvx  |x component of primary vertex of the mother of the particle entering the sensitive volume  |   20   |                  Dd  
+         eic_compton  |                 mvy  |y component of primary vertex of the mother of the particle entering the sensitive volume  |   21   |                  Dd  
+         eic_compton  |                 mvz  |z component of primary vertex of the mother of the particle entering the sensitive volume  |   22   |                  Dd  
+         eic_compton  |               avg_t  |                                      Average time  |   23   |                  Dd  
+         eic_compton  |                  id  |                                         id number  |   24   |                  Di  

@@ -1,0 +1,1 @@
+/home/yulia/yulia/EIC-soft/pythia_jlab/pythiaeRHIC/1.0.0/build/pyMSEL4-q2gt1x01ep10x100.txt

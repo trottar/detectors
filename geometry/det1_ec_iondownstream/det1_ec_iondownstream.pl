@@ -56,6 +56,6 @@ $configuration{"variation"} = "Original";
 #####Load geometry ########################################################
 require "det1_ec_iondownstream_geometry.pl";
 det1_ec_iondownstream();
-require "det1_ec_iondownstream_virtualplane.pl";
-det1_ec_iondownstream_virtualplane();
+#require "det1_ec_iondownstream_virtualplane.pl";
+#det1_ec_iondownstream_virtualplane();
 

@@ -55,6 +55,7 @@ $configuration{"variation"} = "Original";
 
 #####Load geometry ########################################################
 require "det1_ec_ionside_geometry.pl";
+require "./materials.pl";
 det1_ec_ionside();
-require "det1_ec_ionside_virtualplane.pl";
-det1_ec_ionside_virtualplane();
+#require "det1_ec_ionside_virtualplane.pl";
+#det1_ec_ionside_virtualplane();

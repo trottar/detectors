@@ -1,0 +1,122 @@
+use strict;
+use warnings;
+our %detector;
+our %configuration;
+our %parameters;
+
+use Getopt::Long;
+use Math::Trig;
+
+my $DetectorMother="root";
+
+my $DetectorName = 'det1_tracker_barrel';
+
+my $offset=70.9;
+
+my $offset_inner=40.3;
+
+sub det1_tracker_barrel
+{
+ my $NUM  = 1;
+ my @z    = ($offset_inner);
+ my $Rin  = 20;
+ my $Rout = 95;
+ my $Dz   = 160;
+ my @name = (""); 
+ my @mother = ("$DetectorMother"); 
+ my $mat  = ("Ar10CO2");
+# my $mat  = ("G4_Si");
+
+
+
+#--------------- Silicon  --------------------------
+
+ my $NUMS  = 8;
+ my @zS    = ($offset_inner,$offset_inner,$offset_inner,$offset_inner,$offset_inner,$offset_inner);
+# my @z    = (0,0,0,0);
+# my @RinS  = ($Rin, $Rin+1,$Rin+3, $Rin+7,$Rin+11, $Rin+14);
+# my @RoutS = ($Rin+0.05,$Rin+1+0.05,$Rin+3+0.05,$Rin+7+0.05,$Rin+11+0.05,$Rin+14+0.05);
+ my @nameS = ("OSi1","OSi2","OSi3","OSi4","OSi5","OSi6","OSi7","OSi8"); 
+ my @motherS = ("$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother"); 
+ my $matS  = ("Vacuum");
+# my $rotBeam=0.025;
+ my $rotBeam=0.0;
+# my $NUM  = 2;
+# my @z    = ($VTX_offset,$VTX_offset);
+# my @z    = (0,0,0,0);
+# my @Rin  = (3.00,5.00);
+# my @Rout = (3.045,5.045);
+# my @Dz   = (90,125);
+# my @name = ("1","2"); 
+ #my @mother = ("$DetectorMother","$DetectorMother"); 
+# my $mat  = ("Air");
+
+my $nLAYmax=55;
+    my $RinS=  0.; 
+    my $RoutS= 0.6; 
+    my $Dstrz=160.;
+
+ my $nn=0;
+
+for(my $nLAY=1; $nLAY<=$nLAYmax; $nLAY++)
+ {
+
+    my $RxF_Straw=$Rin+5+(($RoutS)*2*($nLAY-1));
+    my $RyF_Straw= $RxF_Straw+ ($RoutS)/2;
+    my $RzF_Straw=$offset_inner;
+    print "$RxF_Straw  $RyF_Straw \n";
+ 
+    my $Sphi= ($RoutS*2/$RxF_Straw);
+    
+    my $Nmod=2*(3.1415)*$RxF_Straw/2/$RoutS+1;
+    
+    print "NUMS: $NUMS \n ";
+    $NUMS=$Nmod;
+    print "NUMS2: $NUMS \n ";
+    
+    for(my $n=1; $n<=$NUMS; $n++)
+    {
+	
+	my $phi_s=(($n-1)*($Sphi));
+	my $phi_s=(($n-1)*($Sphi));
+	my $Sx= -$RxF_Straw*cos($phi_s);
+	my $Sy= -$RyF_Straw*sin($phi_s);
+	my $Sz= $RzF_Straw;
+	
+	print "$nn phi:$phi_s   pos: $Sx  $Sy  $Sz \n";
+	
+	my $Rotation = 90-$phi_s*180/3.1415;
+	
+	my %detector=init_det();
+	$detector{"name"}        = "$DetectorName\_($nLAY-1)\_($n-1)";
+	$detector{"mother"}      = "$DetectorMother" ;
+	$detector{"description"} = "$DetectorName\_($nLAY-1)\_($n-1)";
+	$detector{"pos"}        = "$Sx*cm $Sy*cm $Sz*cm";
+	$detector{"rotation"}   = "0*deg 0*deg $Rotation*deg";
+	$detector{"color"}      = "fbc83c"; 
+	$detector{"type"}       = "Tube";
+	$detector{"dimensions"} = "$RinS*cm $RoutS*cm $Dstrz*cm 0*deg 360*deg";
+	$detector{"material"}   = $mat;
+	$detector{"mfield"}     = "no";
+	$detector{"ncopy"}      = 1;
+	$detector{"pMany"}       = 1;
+	$detector{"exist"}       = 1;
+	$detector{"visible"}     = 1;
+	$detector{"style"}       = 1;
+#	$detector{"sensitivity"} = "eic_trk";
+#	$detector{"hit_type"}    = "eic_trk";
+	$detector{"sensitivity"} = "flux";
+	$detector{"hit_type"}    = "flux";
+	my $id=73000+$nn;
+	$nn =$nn+1;
+	$detector{"identifiers"} = "id manual $id";
+	print_det(\%configuration, \%detector);
+	
+	
+	
+	
+    }
+
+ }
+
+}

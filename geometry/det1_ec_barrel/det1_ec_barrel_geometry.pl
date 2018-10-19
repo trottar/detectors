@@ -24,7 +24,8 @@ sub det1_ec_barrel
 #  my @Dz   = (200);
  my @name = (""); 
  my @mother = ("$DetectorMother"); 
- my @mat  = ("Kryptonite");
+# my @mat  = ("Kryptonite");
+ my @mat  = ("G4_Fe");
  my @rot  = (0);
 
  for(my $n=1; $n<=$NUM; $n++)

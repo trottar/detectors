@@ -47,8 +47,8 @@ sub det1_hc_iondownstream
     $detector{"exist"}       = 1;
     $detector{"visible"}     = 1;
     $detector{"style"}       = 1;
-    $detector{"sensitivity"} = "no";
-    $detector{"hit_type"}    = "no";
+    $detector{"sensitivity"} = "flux";
+    $detector{"hit_type"}    = "flux";
     $detector{"identifiers"} = "no";
      print_det(\%configuration, \%detector);
  }

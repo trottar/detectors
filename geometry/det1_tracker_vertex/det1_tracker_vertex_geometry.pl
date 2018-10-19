@@ -25,16 +25,18 @@ sub det1_tracker_vertex
 
 #--------------- VERTEX Support --------------------------
 
- my $NUMS  = 6;
+my $NUML  = 6;  
+ my $NUMS  = $NUML;
  my @zS    = ($VTX_offset,$VTX_offset,$VTX_offset,$VTX_offset,$VTX_offset,$VTX_offset);
 # my @z    = (0,0,0,0);
- my @RinS  = ($Rin, $Rin+1,$Rin+3, $Rin+7,$Rin+11, $Rin+14);
- my @RoutS = ($Rin+0.05,$Rin+1+0.05,$Rin+3+0.05,$Rin+7+0.05,$Rin+11+0.05,$Rin+14+0.05);
+ my @RinS  = ($Rin,     $Rin+1,     $Rin+3,     $Rin+5,     $Rin+10,     $Rin+14);
+ my @RoutS = ($Rin+0.05,$Rin+1+0.05,$Rin+3+0.05,$Rin+5+0.05,$Rin+10+0.05,$Rin+14+0.05);
  my @DzS   = (10,11,18,24,36,40);
  my @nameS = ("1","2","3","4","5","6"); 
  my @motherS = ("$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother"); 
  my $matS  = ("Vacuum");
- my $rotBeam=0.025;
+# my $rotBeam=0.025;
+ my $rotBeam=0.0;
 # my $NUM  = 2;
  my @z    = ($VTX_offset,$VTX_offset);
 # my @z    = (0,0,0,0);
@@ -67,8 +69,8 @@ sub det1_tracker_vertex
     $detector{"exist"}       = 1;
     $detector{"visible"}     = 1;
     $detector{"style"}       = 1;
-    $detector{"sensitivity"} = "flux";
-    $detector{"hit_type"}    = "flux";
+    $detector{"sensitivity"} = "no";
+    $detector{"hit_type"}    = "no";
     my $id=61000+$n*100;
     $detector{"identifiers"} = "id manual $id";
      print_det(\%configuration, \%detector);
@@ -76,7 +78,6 @@ sub det1_tracker_vertex
 
 #----------------------Silicon ladders ---------------------
 #---- number of layers------
-my $NUML  = 6;  
 # my $NUM  = 13;
 # my @z    = (0,0,0,0);
  my $phi =0;
@@ -89,7 +90,7 @@ my $NUM  = 0;
  my  @posX    = (0,0,0,0,0,0,0,0,0,0,0,0,0);
  my  @posY    = (0,0,0,0,0,0,0,0,0,0,0,0,0);
  my  @posZ    = (0,0,0,0,0,0,0,0,0,0,0,0,0);
-    my @Hx   = (1., 1., 2.,3., 3.,3., 3.);
+    my @Hx   = (1., 1., 2.,2., 3.,3., 3.);
  for(my $l=1; $l<=$NUML; $l++)
  {
 
@@ -100,22 +101,22 @@ my $NUM  = 0;
      my $x    = $RoutS[$l-1]+0.2;
      my $y    = $RoutS[$l-1]+0.2;
      if ($l==1) { 
-	  $NUM  = 12;
-	  $deltaphi=30; 
+	  $NUM  = 14;
+	  $deltaphi=26; 
 
 
      }	elsif ($l==2)  {
-	 $NUM  = 14;
-        
-	 $deltaphi=26;
+	 $NUM  = 18;        
+	 $deltaphi=20;
+
      } elsif ($l==3){
 	 $NUM  = 12;
         
 	 $deltaphi=30;
            
      } elsif ($l==4) {
-	 $NUM  = 12;
-	 $deltaphi=30;
+	 $NUM  = 18;
+	 $deltaphi=20;
 	 
       } elsif ($l==5) {
 	 $NUM  = 18;
@@ -169,6 +170,8 @@ my $NUM  = 0;
 	 $detector{"exist"}       = 1;
 	 $detector{"visible"}     = 1;
 	 $detector{"style"}       = 1;
+#	 $detector{"sensitivity"} = "eic_vtx";
+#	 $detector{"hit_type"}    = "eic_vtx";
 	 $detector{"sensitivity"} = "flux";
 	 $detector{"hit_type"}    = "flux";
 	 my $id=50000+$l*100+$n;
@@ -180,17 +183,30 @@ my $NUM  = 0;
 
     print "********************* START ENDCAPS!!!*********************\n ";
  
-   my $NUME=4;
+    my $NUME=4;
     my $thickE=0.05;
-   my  @X11    = (4.,4.,5.,6.);
-   my  @X11h    = (4.,5.,6.,7.);
-   my  @X21    = (7.,11.,15.,18.);
-    my @Length = (6.,8.5,9.5,12.5);
+   my $rotBeamE=0.025;
+
+#--- for my design ----- 
+#    my  @X11    = (4.,4.5,5.,6.);
+#    my  @X11h    = (4.,5.,6.,7.);
+#    my @Xepos =(0.6,1.,1.2,1.5);
+#    my $myrotBeamH=3.1415 +$rotBeamE*2;
+#    my $myrotBeamE=$rotBeamE*2;
+# -- for CAD ---- 
+     my  @X11    = (4.,4.5,6.,7.);
+     my  @X11h    = (4.,5.,7.,8.);
+     my @Xepos =(0.,0.,0.,0.);
+     my $myrotBeamH=3.1415 ;
+     my $myrotBeamE=0;
+#--------------------------------------------
+    my  @X21    = (7.,11.,15.,18.);
+    my @Length = (6.,7.5,9.0,12.5);
+
    my  @Zend = (-19.5,-28.,-41.5,-48.);
    my  @Zend2 = (19.5+2*$VTX_offset,28.+2*$VTX_offset,41.5+2*$VTX_offset,48.+2*$VTX_offset);
-   my @Xepos =(0.6,1.,1.2,1.5);
-    my $angle=3.1415 +$rotBeam*2;
-    
+#    my $angle=3.1415 +$rotBeamE*2;
+ 
  for(my $e=1; $e<=2; $e++)
  {
      for(my $k=1; $k<=$NUME; $k++)
@@ -204,14 +220,15 @@ my $NUM  = 0;
 	 $detector{"description"} = "VTX_endcap";
 	 if($e==1) {
 	     my $X12=$X11[$k-1]+$thickE;
+              
 	     $detector{"pos"}        = "$Xepos[$k-1]*cm 0.*cm  $Zend[$k-1]*cm";
-	     $detector{"rotation"}   = "0*rad ($rotBeam*2)*rad 0*rad"; 
+	     $detector{"rotation"}   = "0*rad $myrotBeamE*rad 0*rad"; 
 	     $detector{"dimensions"} = " $X11[$k-1]*cm $X12*cm  $X21[$k-1]*cm $X22*cm $Length[$k-1]*cm 0*deg 360*deg";    
 	 }
 	 else { 
 	     my $X12=$X11h[$k-1]+$thickE;
 	     $detector{"pos"}        = "-$Xepos[$k-1]*cm 0.*cm  $Zend2[$k-1]*cm";
-	     $detector{"rotation"}   = "0*rad $angle*rad *rad";
+	     $detector{"rotation"}   = "0*rad  $myrotBeamH*rad *rad";
 	     $detector{"dimensions"} = " $X11h[$k-1]*cm $X12*cm  $X21[$k-1]*cm $X22*cm $Length[$k-1]*cm 0*deg 360*deg";    
         }
 	 $detector{"color"}      = "00FF00"; 
@@ -225,6 +242,8 @@ my $NUM  = 0;
 	 $detector{"exist"}       = 1;
 	 $detector{"visible"}     = 1;
 	 $detector{"style"}       = 1;
+#	 $detector{"sensitivity"} = "eic_vtx";
+#	 $detector{"hit_type"}    = "eic_vtx";
 	 $detector{"sensitivity"} = "flux";
 	 $detector{"hit_type"}    = "flux";
 	 my $id=51000+$k;    
@@ -232,4 +251,90 @@ my $NUM  = 0;
 	 print_det(\%configuration, \%detector);
      }
  }
+
+    print "********************* START SI DISKS!!!*********************\n ";
+ 
+ my $NUM  = 4;
+
+ my $myz=440.5;
+ my @z    = (80,  90,  100,   110);
+ my @Rin  = (5.5, 6,   6,     6.5);
+ my @Rout = (17,  17,  17,     17);
+ my @Dz   = (0.3,0.3,0.3,0.3,);
+ my @name = ("1","2","3","4",); 
+ my @mother = ("$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother",); 
+ my $mat  = ("Vacuum");
+my $DetectorNameD = 'det1_tracker_vertexD';
+
+ for(my $n=1; $n<=$NUM; $n++)
+ {
+    my %detector=init_det();
+    my $name =("$DetectorNameD\_$name[$n-1]");
+     print "detector name DISKS:  $name \n";
+   $detector{"name"}        = "$name ";
+    $detector{"mother"}      = "$mother[$n-1]" ;
+    $detector{"description"} = "$DetectorName\_$name[$n-1]";
+    $detector{"pos"}        = "-2*cm 0*cm $z[$n-1]*cm";
+    $detector{"rotation"}   = "0.025*rad 0*deg 0*deg";
+    $detector{"color"}      = "09e5f4"; 
+    $detector{"type"}       = "Tube";
+    $detector{"dimensions"} = "$Rin[$n-1]*cm $Rout[$n-1]*cm $Dz[$n-1]*cm 0*deg 360*deg";
+    $detector{"material"}   = $mat;
+    $detector{"mfield"}     = "no";
+    $detector{"ncopy"}      = 1;
+    $detector{"pMany"}       = 1;
+    $detector{"exist"}       = 1;
+    $detector{"visible"}     = 1;
+    $detector{"style"}       = 1;
+#    $detector{"sensitivity"} = "eic_vtx";
+#    $detector{"hit_type"}    = "eic_vtx";
+    $detector{"sensitivity"} = "flux";
+    $detector{"hit_type"}    = "flux";
+    my $id=52000+$n*100;
+    $detector{"identifiers"} = "id manual $id";
+     print_det(\%configuration, \%detector);
+ }
+     print "********************* START disks electron side *********************\n ";
+
+ my $NUM  = 4;
+ my @z    = (-70,  -80,  -90,   -100);
+ my @Rin  = (5.5, 6,   6,     6.5);
+ my @Rout = (17,  17,  17,     17);
+ my @Dz   = (0.15,0.15,0.15,0.15);
+ my @name = ("1","2","3","4",); 
+ my @mother = ("$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother",); 
+ my $mat  = ("Vacuum");
+my $DetectorNameD = 'det1_tracker_vertexDe';
+
+ for(my $n=1; $n<=$NUM; $n++)
+ {
+    my %detector=init_det();
+     
+    my $name =("$DetectorNameD\_$name[$n-1]");
+    print "detector name DISKS $name \n";
+
+    $detector{"name"}        = "$name";
+    $detector{"mother"}      = "$mother[$n-1]" ;
+    $detector{"description"} = "$DetectorNameD\_$name[$n-1]";
+    $detector{"pos"}        = "2*cm 0*cm $z[$n-1]*cm";
+    $detector{"rotation"}   = "-0.025*rad 0*deg 0*deg";
+    $detector{"color"}      = "09e5f4"; 
+    $detector{"type"}       = "Tube";
+    $detector{"dimensions"} = "$Rin[$n-1]*cm $Rout[$n-1]*cm $Dz[$n-1]*cm 0*deg 360*deg";
+    $detector{"material"}   = $mat;
+    $detector{"mfield"}     = "no";
+    $detector{"ncopy"}      = 1;
+    $detector{"pMany"}       = 1;
+    $detector{"exist"}       = 1;
+    $detector{"visible"}     = 1;
+    $detector{"style"}       = 1;
+#    $detector{"sensitivity"} = "eic_vtx";
+#    $detector{"hit_type"}    = "eic_vtx";
+    $detector{"sensitivity"} = "flux";
+    $detector{"hit_type"}    = "flux";
+    my $id=53000+$n*100;
+    $detector{"identifiers"} = "id manual $id";
+     print_det(\%configuration, \%detector);
+ }
+
 }

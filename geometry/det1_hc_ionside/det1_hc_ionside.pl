@@ -6,10 +6,14 @@ use lib ("$ENV{GEMC}/io");
 use parameters;
 use utils;
 
+
 use geometry;
 use hit;
 use bank;
 use math;
+
+# materials
+
 
 # use Math::Trig;
 # use Math::MatrixReal;
@@ -56,4 +60,6 @@ $configuration{"variation"} = "Original";
 #####Load geometry ########################################################
 require "det1_hc_ionside_geometry.pl";
 det1_hc_ionside();
+#####  MATERIALS ########################################################
+require "./materials.pl";
 

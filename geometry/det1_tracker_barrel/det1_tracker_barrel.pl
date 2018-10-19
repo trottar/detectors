@@ -53,7 +53,15 @@ $configuration{"variation"} = "Original";
 # our %parameters    = get_parameters(%configuration);
 # $configuration{"detector_name"} = "meic_det1_dual";
 
+
 #####Load geometry ########################################################
-require "det1_tracker_barrel_geometry.pl";
+require "det1_tracker_barrel_geometry_STR.pl";
+#require "det1_tracker_barrel_geometry_Si.pl";
 det1_tracker_barrel();
+#####  MATERIALS ########################################################
+
+require "./materials.pl";
+#####  HITS ########################################################
+require "./hit.pl";
+require "./bank.pl";
 

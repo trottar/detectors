@@ -1,0 +1,46 @@
+Entering initializeCNDConstants
+Entering initializeCTOF
+  > Data loaded in translation table dcTT
+ > bmt pre-initizialization. 
+
+ >> Parsing det1_hybrid_full.gcard for options: 
+  > mysql server host name set to: eicdb
+  > mysql Database set to: test
+  > Select mysql user name set to: eicuser
+  > Select mysql password set to: iloveeic
+  > Activates integrated geant4 raw output for system(s) set to: flux
+  > Registers Hit Process Routines. set to: eic
+  > Choice of Physics List set to: QGSP_BERT+STD
+  > Set to one if you want to save zero energy hits in the output set to: 0
+  > Composition of the Experimental Hall set to: Vacuum
+  > Max X Position in millimeters. Beyond this the track will be killed. set to: 100000
+  > Max Y Position in millimeters. Beyond this the track will be killed. set to: 100000
+  > Max Z Position in millimeters. Beyond this the track will be killed. set to: 100000
+  > (x,y,z) semi-dimensions of the experimental Hall. set to: 100*m,100*m,100*m
+  > Magnetic Field Maps Location set to: ../field
+  > Magnetic Field of the Hall set to: det1_solenoid_hybrid_v1
+  > Primary particle, Energy, Theta, Phi set to: e-, 1*GeV, 90*deg, 0*deg
+  > delta_Energy, delta_Theta, delta_phi set to: 0*GeV,0*deg,0*deg
+  > Primary Particle Vertex set to: (0 , 0, 0)m
+  > Primary Particle Vertex Spread set to: (0.,0)cm
+  > Luminosity Particle Parameters set to: 1, 1*ns, 1*ns
+  > Luminosity Particle, Energy, Theta, Phi set to: e-, 5*GeV, 180*deg, 0*deg
+  > delta_Energy, delta_Theta, delta_phi set to: 0*GeV,0*deg,0*deg
+  > Luminosity Particle Vertex set to: (0, 0, 80)m
+  > Luminosity Particle Vertex Spread set to: (0.,0)cm
+  > Luminosity Particle 2 Parameters set to: 1, 1*ns, 1*ns
+  > Luminosity Particle 2, Energy, Theta, Phi set to: neutron, 5*GeV, 50e-3*rad, 180*deg
+  > delta_Energy, delta_Theta, delta_phi set to: 0*GeV,0*deg,0*deg
+  > Luminosity Particle 2 Vertex set to: (0, 0, 0)m
+  > Luminosity Particle Vertex 2 Spread set to: (0.,0)cm
+  > geometry set to: 1000x1000
+  > Use High Resolution Graphics set to: 1
+  > QT Gui set to: 1
+  > Type of output, output filename.  set to: evio,output.evio
+  > Executes commands in macro file set to: det1_slice_solenoid.vis
+
+  > Hit Verbosity set to: 2
+
+
+  > Initializing GEant4 MonteCarlo:  gemc 2.6
+

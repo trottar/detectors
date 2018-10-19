@@ -50,7 +50,7 @@ sub det1_beamline_magnet_ion_dipole
 #  my @rot  = (-0.052998004/3.1415926*180,-0.025996009/3.1415926*180,0,0,0,0,0,0);
 my @name = ("downstream_dipole1_outer","downstream_dipole2_outer","downstream_dipole3_outer","downstream_dipole1_inner","downstream_dipole2_inner","downstream_dipole3_inner","downstream_dipole1_front","downstream_dipole2_front","downstream_dipole3_front","downstream_dipole1_back","downstream_dipole2_back","downstream_dipole3_back");
 my @mother = ("$DetectorMother","$DetectorMother","$DetectorMother","$DetectorName\_downstream_dipole1_outer","$DetectorName\_downstream_dipole2_outer","$DetectorName\_downstream_dipole3_outer","$DetectorName\_downstream_dipole1_inner","$DetectorName\_downstream_dipole2_inner","$DetectorName\_downstream_dipole3_inner","$DetectorName\_downstream_dipole1_inner","$DetectorName\_downstream_dipole2_inner","$DetectorName\_downstream_dipole3_inner"); 
-my @mat  = ("Kryptonite","Kryptonite","Kryptonite","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum");
+my @mat  = ("Vacuum","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum","Vacuum");
 #dipole 2 has addtional shift by 0.1m to outside while keep its tilting angle, so z is shift by either positive or negative amount depending on tilting angle is postive or negative, x is shift by negative amount
 # my @z  = (
 # $i_ds_dipole1_Z,$i_ds_dipole2_Z+0.1*sin($i_ds_dipole2_Theta),
@@ -67,7 +67,7 @@ $i_ds_dipole1_Z,$i_ds_dipole2_Z,$i_ds_dipole3_Z,
 my @x  = ($i_ds_dipole1_X,$i_ds_dipole2_X,$i_ds_dipole3_X,0,0,0,0,0,0,0,0,0);
 # my @x  = ($i_ds_dipole1_X,$i_ds_dipole2_X-0.1*cos($i_ds_dipole2_Theta),0,0,0,0,0,0);
 my @Rin  = (
-0,0,0,
+5,0,0,
 5,0,0,
 5,0,0,
 5,0,0,

@@ -53,7 +53,13 @@ $configuration{"variation"} = "Original";
 # our %parameters    = get_parameters(%configuration);
 # $configuration{"detector_name"} = "meic_det1_dual";
 
+
+#####  MATERIALS ########################################################
+
+require "./materials.pl";
+
 #####Load geometry ########################################################
+
 # require "det1_tracker_barrel.pl";
 # det1_tracker_barrel();
 require "det1_tracker_eleside.pl";

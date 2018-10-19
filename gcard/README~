@@ -1,0 +1,1 @@
+gemc -INPUT_GEN_FILE="LUND, pythia100-10.txt" det1_hybrid_full.gcard

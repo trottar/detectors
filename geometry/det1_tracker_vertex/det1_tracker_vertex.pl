@@ -56,3 +56,9 @@ $configuration{"variation"} = "Original";
 #####Load geometry ########################################################
 require "det1_tracker_vertex_geometry.pl";
 det1_tracker_vertex();
+#####  MATERIALS ########################################################
+#require "./materials.pl";
+#####  HITS ########################################################
+require "./hit.pl";
+require "./bank.pl";
+

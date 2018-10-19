@@ -31,7 +31,7 @@ sub det1_beamline_magnet_ion_dipolebig
     $detector{"dimensions"} = "35*cm 39*cm 45*cm 49*cm 0.75*m 0*deg 360*deg";    
 #     $detector{"type"}       = "Tube";
 #     $detector{"dimensions"} = "45*cm 50*cm 0.75*m 0*deg 360*deg";
-    $detector{"material"}   = "Kryptonite";
+    $detector{"material"}   = "Vacuum";
     $detector{"mfield"}     = "no";
     $detector{"ncopy"}      = 1;
     $detector{"pMany"}       = 1;
@@ -42,7 +42,9 @@ sub det1_beamline_magnet_ion_dipolebig
     $detector{"hit_type"}    = "no";
     $detector{"identifiers"} = "no";
      print_det(\%configuration, \%detector);
-     
+  
+
+    
 #     my %detector=init_det();
 #     $detector{"name"}        = "det1_magnet_ion_dipolebig_outer";
 #     $detector{"mother"}      = "$DetectorMother" ;

@@ -1,0 +1,14 @@
+
+gemc -INPUT_GEN_FILE="LUND, pythia100-10.txt" det1_hybrid_full.gcard
+gemc  det1_hybrid_full.gcard
+
+gemc -INPUT_GEN_FILE="BEAGLE, Jpsi_data.txt" det1_hybrid_full.gcard
+
+
+
+evio2root -INPUTF=output.evio
+evio2root -INPUTF=output.evio -B=/home/yulia/GEMC/detectors/eic/geometry/det1_tracker_vertex/det1_tracker_vertex
+
+
+eic_vtx->Draw("avg_y:avg_x", "abs(avg_z)<5000 && tInfos.eTot>10");
+

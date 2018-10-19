@@ -1,0 +1,1 @@
+/home/yulia/yulia/EIC-soft/pythia_jlab_v2/pythia/work/pythia_e-p_10x100_Q0_100k_msel2_PHP.txt

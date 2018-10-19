@@ -9,7 +9,7 @@ use Math::Trig;
 
 my $DetectorMother="root";
 
-my $DetectorName = 'det1_tracker_ionside';
+my $DetectorName = 'det1_tracker_ionsideGEM';
 
 my $offset=70.9;
 
@@ -20,23 +20,25 @@ sub det1_tracker_ionside
  my $myz=440.5;
  my $mymyz1    = ($myz-70+$offset-3);
  my $mymyz2    = ($myz-85+$offset-3);
- my $NUM  = 11;
- my @z    = (40,50,60,140,150,160,225,235,245,$mymyz1,$mymyz2);
-#  my @Rin  = (0.7,1.4,2.1,9.1,9.8,10.5,12,13,14);
- my @Rin  = (5,6,7,15,17,18,18,19,20,25,25);
- my @Rout = (30,32,33,53,57,60,95,100,110,180,180);
- my @Dz   = (1,1,1,1,1,1,1,1,1,5,5);
- my @name = ("1","2","3","4","5","6","7","8","9","10","11"); 
- my @mother = ("$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother"); 
- my $mat  = ("Vacuum");
+ my $NUM  = 8;
+# my @z    = (215,222,226,231,236,241,246,$mymyz1,$mymyz2);
+ my @z    = (222,226,231,236,241,246,$mymyz1,$mymyz2);
+# my @Rin  = (5,6,15,13,13,13,14,14,14,25,25);
+ my @Rin  = (13,13,13,14,14,14,25,25);
+# my @Rout = (30,32,95,97,100,105,110,113,115,180,180);
+ my @Rout = (97,100,105,110,113,115,180,180);
+ my @Dz   = (1,1,1,1,1,1,5,5);
+ my @name = ("1","2","3","4","5","6","7","8"); 
+ my @mother = ("$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother","$DetectorMother"); 
+ my $mat  = ("Ar10CO2");
 
- for(my $n=7; $n<=$NUM; $n++)
+ for(my $n=1; $n<=$NUM; $n++)
  {
     my %detector=init_det();
     $detector{"name"}        = "$DetectorName\_$name[$n-1]";
     $detector{"mother"}      = "$mother[$n-1]" ;
     $detector{"description"} = "$DetectorName\_$name[$n-1]";
-    $detector{"pos"}        = "0*cm 0*cm $z[$n-1]*cm";
+    $detector{"pos"}        = "-5*cm 0*cm $z[$n-1]*cm";
     $detector{"rotation"}   = "0*deg 0*deg 0*deg";
     $detector{"color"}      = "FF8000"; 
     $detector{"type"}       = "Tube";
@@ -50,8 +52,12 @@ sub det1_tracker_ionside
     $detector{"style"}       = 1;
     $detector{"sensitivity"} = "flux";
     $detector{"hit_type"}    = "flux";
-    my $id=52000+$n*100;
+    my $id=72000+$n*100;
     $detector{"identifiers"} = "id manual $id";
      print_det(\%configuration, \%detector);
  }
+
+ 
+
+
 }
