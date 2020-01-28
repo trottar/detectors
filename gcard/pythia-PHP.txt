@@ -1,0 +1,1 @@
+/home/yulia/yulia/EIC-soft/pythia_jlab/pythiaeRHIC/1.0.0/build/PhP0/pythia.txt

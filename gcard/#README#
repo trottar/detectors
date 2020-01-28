@@ -1,0 +1,8 @@
+gemc -INPUT_GEN_FILE="LUND, pythia100-10.txt" det1_hybrid_full.gcard
+gemc  det1_hybrid_full.gcard
+
+evio2root -INPUTF=output.evio
+
+root output.root
+
+flux->Draw("avg_y:-avg_x:avg_z", " avg_z<6500 && avg_z>4700" )

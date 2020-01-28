@@ -1,0 +1,25 @@
+             eic_trk  |              bankid  |                                   eic_trk bank ID  | 6000   |                  Di  
+             eic_trk  |                  id  |                                         Volume ID  |   90   |                  Di  
+             eic_trk  |                hitn  |                                        hit number  |   99   |                  Di  
+             eic_trk  |                 pid  |                                       Particle ID  |    1   |                  Di  
+             eic_trk  |                mpid  |                                Mother Particle ID  |    2   |                  Di  
+             eic_trk  |                 tid  |                                          track ID  |    3   |                  Di  
+             eic_trk  |                mtid  |                                   mother track ID  |    4   |                  Di  
+             eic_trk  |                otid  |                                 original track id  |    5   |                  Di  
+             eic_trk  |              trackE  |                                           totEdep  |    6   |                  Dd  
+             eic_trk  |             totEdep  |                            Total Energy Deposited  |    7   |                  Dd  
+             eic_trk  |               avg_x  |                         Average global x position  |    8   |                  Dd  
+             eic_trk  |               avg_y  |                         Average global y position  |    9   |                  Dd  
+             eic_trk  |               avg_z  |                         Average global z position  |   10   |                  Dd  
+             eic_trk  |              avg_lx  |                         Average local  x position  |   11   |                  Dd  
+             eic_trk  |              avg_ly  |                         Average local  y position  |   12   |                  Dd  
+             eic_trk  |              avg_lz  |                         Average local  z position  |   13   |                  Dd  
+             eic_trk  |                  px  |                     x component of track momentum  |   14   |                  Dd  
+             eic_trk  |                  py  |                     y component of track momentum  |   15   |                  Dd  
+             eic_trk  |                  pz  |                     z component of track momentum  |   16   |                  Dd  
+             eic_trk  |                  vx  |                    x coordinate of primary vertex  |   17   |                  Dd  
+             eic_trk  |                  vy  |                    y coordinate of primary vertex  |   18   |                  Dd  
+             eic_trk  |                  vz  |                    z coordinate of primary vertex  |   19   |                  Dd  
+             eic_trk  |                 mvx  |                     x coordinate of mother vertex  |   20   |                  Dd  
+             eic_trk  |                 mvy  |                     y coordinate of mother vertex  |   21   |                  Dd  
+             eic_trk  |                 mvz  |                     z coordinate of mother vertex  |   22   |                  Dd  
