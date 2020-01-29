@@ -1,0 +1,11 @@
+<gcard>
+	<detector name="example" factory="TEXT" variation="original"/>	
+	<option name="geometry" value="600x600"/>
+	
+	<option name="INTEGRATEDRAW" value="flux"/>	
+	
+	<option name="OUTPUT" value="txt, out.txt"/>
+	<option name="SAVE_ALL_MOTHERS" value="1"/>
+	
+	<option name="PHYSICS" value="STD + FTFP_BERT"/>
+</gcard>
